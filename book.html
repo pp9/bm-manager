@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookmarks page</title>
+    <link rel="stylesheet" href="dist/css/styles.css">
+</head>
+<body ng-app="bms">
+    <div class="container">
+
+        <div id="app" ng-controller="BmsController as bms">
+            <div ng-repeat="list in bms.bmsList" class="bookmark-item">
+                <div class="bookmark-item__title">{{list.title}}</div>
+                <div class="bookmark-item__url">{{list.url}}</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+</html>

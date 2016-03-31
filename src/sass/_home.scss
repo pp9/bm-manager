@@ -1,0 +1,19 @@
+.bookmark-item {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ececec;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+        > .bookmark-item__url {
+            display: block;
+        }
+    }
+}
+.bookmark-item__url {
+    display: none;
+    color: #ccc;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+}
