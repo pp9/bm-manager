@@ -5,15 +5,23 @@
     <link rel="stylesheet" href="dist/css/styles.css">
 </head>
 <body ng-app="bms">
-    <div class="container">
-
-        <div id="app" ng-controller="BmsController as bms">
-            <div ng-repeat="list in bms.bmsList" class="bookmark-item">
-                <div class="bookmark-item__title">{{list.title}}</div>
-                <div class="bookmark-item__url">{{list.url}}</div>
+    <header class="main-header"></header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 app-aside">
+<!--                 <div ng-controller="BmsTagsController as bmsTags">
+                    <div ng-repeat="tag in bmsTags.tags" ng-click="bmsTags.hello(this.tag)">{{tag.name}}</div>
+                </div> -->
+            </div>
+            <div class="col-sm-10">
+                <div ng-controller="BmsController as bms">
+<!--                     <div ng-repeat="list in bms.bmsList" class="bookmark-item">
+                        <div class="bookmark-item__title">{{list.title}} / id: {{list.id}} / <span ng-repeat="tag in list.tags" style="color: red;">{{tag}}</span></div>
+                        <div class="bookmark-item__url">{{list.url}}</div>
+                    </div> -->
+                </div>
             </div>
         </div>
-
     </div>
 
     <script src="node_modules/angular/angular.js"></script>
