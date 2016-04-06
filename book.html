@@ -3,28 +3,42 @@
 <head>
     <title>Bookmarks page</title>
     <link rel="stylesheet" href="dist/css/styles.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="src/js/app.js"></script>
 </head>
 <body ng-app="bms">
-    <header class="main-header"></header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2 app-aside">
-<!--                 <div ng-controller="BmsTagsController as bmsTags">
-                    <div ng-repeat="tag in bmsTags.tags" ng-click="bmsTags.hello(this.tag)">{{tag.name}}</div>
-                </div> -->
+    <div ng-controller="BmsController as bms">
+        <header class="main-header">
+            <div class="container">
+                <ul class="list-inline" style="color: #fff;">
+                    <li ng-repeat="filter in activeFilters">{{filter.name}}</li>
+                </ul>
             </div>
-            <div class="col-sm-10">
-                <div ng-controller="BmsController as bms">
-<!--                     <div ng-repeat="list in bms.bmsList" class="bookmark-item">
-                        <div class="bookmark-item__title">{{list.title}} / id: {{list.id}} / <span ng-repeat="tag in list.tags" style="color: red;">{{tag}}</span></div>
+        </header>
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="col-sm-2 app-aside">
+                    <div ng-repeat="tag in tags" ng-click="filterBytags(this.tag)">{{tag.name}}</div>
+                </div>
+                <div class="col-sm-8">
+                    <div ng-repeat="list in bmsList" class="bookmark-item">
+                        <div class="bookmark-item__title" ng-click="setCurrent($index)">{{list.title}} / id: {{list.id}} / <span ng-repeat="tag in list.tags" style="color: red;">{{tag}}</span></div>
                         <div class="bookmark-item__url">{{list.url}}</div>
-                    </div> -->
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="app-edit">
+                        <p>{{currentItem.title}}</p>
+                        <p>{{currentItem.url}}</p>
+                        <ul class="list-inline">
+                            <li ng-repeat="tag in currentItem.tags">{{tag}} <i ng-click="removeTag($index)">x</i></li>
+                            <buttton class="btn btn-default btn-sm" ng-show="editMod" ng-click="smm=true">Add</buttton>
+                            <input type="text" ng-show="smm" ng-keyup="$event.keyCode == 13 && subminAddTag()" ng-model="newTag">
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="src/js/app.js"></script>
 </body>
 </html>
